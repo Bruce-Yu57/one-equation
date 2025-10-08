@@ -3,9 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
     <title>一元一次方程式練習</title>
     <script>
+      // 改善iOS相容性
+      if (!window.Promise) {
+        document.write('<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"><\/script>');
+      }
+      
       window.MathJax = {
         tex: {
           inlineMath: [['\\(', '\\)']],
@@ -13,16 +21,27 @@
         },
         options: {
           skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        },
+        startup: {
+          ready: function () {
+            MathJax.startup.defaultReady();
+            console.log('MathJax is loaded and ready');
+          }
         }
       };
     </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6,es2015,es2016,es2017,es2018,es2019,es2020"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="module" crossorigin src="/one-equation/assets/index-e22ab29e.js"></script>
-    <link rel="stylesheet" href="/one-equation/assets/index-e5b1fd6d.css">
+    <script type="module" crossorigin src="/one-equation/assets/index-a5727b50.js"></script>
+    <link rel="stylesheet" href="/one-equation/assets/index-954de6bf.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+        <h2>載入中...</h2>
+        <p>如果頁面長時間空白，請重新整理頁面</p>
+      </div>
+    </div>
     
   </body>
 </html>
