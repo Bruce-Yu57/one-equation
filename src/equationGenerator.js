@@ -134,10 +134,14 @@ function generateEquation(level) {
             let op1 = Math.random() < 0.5 ? '+' : '-';
 
             if (op1 === '+') {
-                equation = `x + ${a.toEquationString()} = ${b.toEquationString()}`;
+                // 如果a是負數，用括號包起來
+                const aStr = a.numerator < 0 ? `(${a.toEquationString()})` : a.toEquationString();
+                equation = `x + ${aStr} = ${b.toEquationString()}`;
                 answer = b.subtract(a);
             } else {
-                equation = `x - ${a.toEquationString()} = ${b.toEquationString()}`;
+                // 如果a是負數，用括號包起來
+                const aStr = a.numerator < 0 ? `(${a.toEquationString()})` : a.toEquationString();
+                equation = `x - ${aStr} = ${b.toEquationString()}`;
                 answer = b.add(a);
             }
             break;
